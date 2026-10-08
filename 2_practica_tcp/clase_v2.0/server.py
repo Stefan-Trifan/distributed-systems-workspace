@@ -13,37 +13,70 @@ def procesar(r):
         }
         return respuesta
 
-    if r.get('type')=='time':
+    if r.get('type') =='time':
         respuesta = {
             'status': 'ok',
             'time': datetime.now().strftime('%H:%M:%S')
         }
         return respuesta
 
-    return{'status':'error', 'message':'Orden desconocida'}
+    return{
+        'status':'error',
+        'message':'Orden desconocida'
+    }
 
 def atender_cliente(c, addr):
+    # with simplemente gestiona el socket
+    # se encargará de cerrarlo cuando salgamos del bloque
     with c:
+
+        # Mientras este cliente siga conectado,
+        # sigue recibiendo mensajes de él
         while True:
+
+            # Espera: datos de la conexión que ya existe
             data = c.recv(4096)
 
             if not data:
                 break
-            
+
             print(f"Recibido de {addr}: {data.decode()}")
 
             # Ejemplo 2
-            respuesta=procesar(json.loads(data.decode()))
+            # loads: convierte JSON -> diccionario
+            respuesta = procesar(json.loads(data.decode()))
+            # dumps: convierte diccionario -> JSON.
             c.sendall(json.dumps(respuesta).encode())
 
 
-# Creamos un socket de tipo internet para TCP. De tipo stream
+# Creamos un socket
+# s -> SOCKET DE ESCUCHA
+# AF_INET: Utiliza IPv4
+# SOCK_STREAM: TCP
 with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
+
+    # No importa. Configura una opción del socket
+    # Permite reutilizar la dirección local en determinadas situaciones,
+    # útil cuando reinicias rápidamente el servidor
     s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+
+    # Asocia este socket con esta dirección y este puerto
     s.bind((HOST, PORT))
+
+    # Este socket va a actuar como socket servidor
+    # y está PREPARADO  para aceptar conexiones entrantes.
+    # solo preparado. todavia no recibe
     s.listen()
 
+    # Estamos esperando una conexión TCP.
+
+    # Después de terminar con un cliente, vuelve a esperar a otro.
     while True:
-        c, addr = s.accept() # c= conexion
+        # accept() se dedica a recibir conexiones
+        # c -> SOCKET DE COMUNICACIÓN
+        # el socket de la conexión TCP
+        # establecida con ese cliente.
+        c, addr = s.accept() # c = conexion
+
         print(f"Recibida conexion de {addr}")
         atender_cliente(c, addr)

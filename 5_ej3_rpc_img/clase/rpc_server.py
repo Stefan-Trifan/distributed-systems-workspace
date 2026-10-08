@@ -8,7 +8,8 @@ class RPCServer:
             raise TypeError("No callable function")
         self.procedures[name]=function
 
-    def dispatch(self,r):
+def dispatch(self,r):
+        # done TODO: buscar función, ejecutar *args y gestionar errores
         name = r.get("function")
         args = r.get("args", [])
         if name not in self.procedures:

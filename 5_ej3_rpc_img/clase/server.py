@@ -10,8 +10,9 @@ rpc.register("info_imagen", info_imagen)
 rpc.register("escala_grises", escala_grises)
 rpc.register("redimensionar", redimensionar)
 
-# TODO: registrar procedimientos
+# done TODO: registrar procedimientos
 def atender(c,a):
+    # done TODO: recibir, dispatch, responder
     print("ATENDIENDO PETICION")
     msgin = c.recv(4096).decode()
 
@@ -25,7 +26,11 @@ def atender(c,a):
 
 with socket.socket() as s:
     s.setsockopt(socket.SOL_SOCKET,socket.SO_REUSEADDR,1); s.bind((HOST,PORT)); s.listen()
-    # TODO: usar ThreadPoolExecutor
 
-    while True:
-        c,a=s.accept(); atender(c,a)
+    # done TODO: usar ThreadPoolExecutor
+    with ThreadPoolExecutor(max_workers=3) as pool:
+
+        while True:
+            c,a=s.accept()
+            # atender(c,a)
+            pool.submit(atender, c, a)

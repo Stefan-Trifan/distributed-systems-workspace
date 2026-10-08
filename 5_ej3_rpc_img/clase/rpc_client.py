@@ -10,8 +10,8 @@ class RPCClient:
         self.timeout= timeout
 
     def call(self,function,*args):
-        # TODO: petición genérica, socket, JSON, respuesta y errores
-        #Primera peticion
+        # done TODO: petición genérica, socket, JSON, respuesta y errores
+        # Primera peticion
         req = {'function': function, 'args': list(args)} #objeto json
 
         try:

@@ -4,7 +4,7 @@ import time
 HOST = '127.0.0.1'
 PORT=5001
 
-def enviar(texto, c)
+def enviar(texto, c):
     # manda los bytes decodificados
     # por la conexión TCP.
     c.sendall(texto.encode()) # Marshall
