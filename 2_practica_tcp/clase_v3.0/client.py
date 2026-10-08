@@ -16,13 +16,8 @@ with socket.create_connection((HOST, PORT), timeout=3) as c:
     while True:
         time.sleep(2)
 
-        # Ejemplo 1
-        # mensaje="Hola servidor"
-        # respuesta=enviar(mensaje, c)
-        # print(respuesta)
-
         # Ejemplo 2
-        mensaje={
+        mensaje = {
             "type": "message",
             "text": "Hola servidor"
         }

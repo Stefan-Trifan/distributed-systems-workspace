@@ -27,13 +27,11 @@ def atender_cliente(c, addr):
     with c:
         while True:
             data = c.recv(4096)
+
             if not data:
                 break
+            
             print(f"Recibido de {addr}: {data.decode()}")
-
-            # Ejemplo 1
-            # respuesta="Hola cliente"
-            # c.sendall(respuesta.encode())
 
             # Ejemplo 2
             respuesta=procesar(json.loads(data.decode()))
@@ -50,10 +48,10 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
         c, addr = s.accept() # c= conexion
         print(f"Recibida conexion de {addr}")
         # atender_cliente(c, addr)
-        hilo=threading.Thread(
-            target=atender_cliente,
-            args=(c,addr),
-            daemon=True
+        hilo = threading.Thread(
+            target = atender_cliente,
+            args = (c,addr),
+            daemon = True
         )
 
         hilo.start()

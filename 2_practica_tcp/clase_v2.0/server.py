@@ -7,14 +7,14 @@ PORT = 5001
 
 def procesar(r):
     if r.get('type') == 'message':
-        respuesta={
+        respuesta = {
             'status':'ok',
             'message': 'Hola cliente'
         }
         return respuesta
 
     if r.get('type')=='time':
-        respuesta={
+        respuesta = {
             'status': 'ok',
             'time': datetime.now().strftime('%H:%M:%S')
         }
@@ -26,13 +26,15 @@ def atender_cliente(c, addr):
     with c:
         while True:
             data = c.recv(4096)
+
             if not data:
                 break
+            
             print(f"Recibido de {addr}: {data.decode()}")
 
-            # Ejemplo 1
-            respuesta="Hola cliente"
-            c.sendall(respuesta.encode())
+            # Ejemplo 2
+            respuesta=procesar(json.loads(data.decode()))
+            c.sendall(json.dumps(respuesta).encode())
 
 
 # Creamos un socket de tipo internet para TCP. De tipo stream

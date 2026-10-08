@@ -3,23 +3,21 @@ import json
 
 HOST, PORT = '127.0.0.1', 5002
 
-
 # Funciones que deben implementar los alumnos
 def temperatura(ciudad):
-    if ciudad=='Madrid':
+    if ciudad == 'Madrid':
         return 21
     return None
 
 def humedad(ciudad):
-    if ciudad=='Madrid':
+    if ciudad == 'Madrid':
         return 10
     return None
 
 def pronostico(ciudad):
-    if ciudad=='Madrid':
+    if ciudad == 'Madrid':
         return "Maremoto"
     return None
-
 
 def procesar(r):
     ciudad = r.get('ciudad')
@@ -50,7 +48,6 @@ def procesar(r):
         'status': 'ok',
         'result': resultado
     }
-
 
 with socket.socket() as s:
     s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
