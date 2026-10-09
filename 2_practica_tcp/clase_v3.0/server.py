@@ -14,7 +14,7 @@ def procesar(r):
         }
         return respuesta
 
-    if r.get('type') =='time':
+    if r.get('type') == 'time':
         respuesta = {
             'status': 'ok',
             'time': datetime.now().strftime('%H:%M:%S')
