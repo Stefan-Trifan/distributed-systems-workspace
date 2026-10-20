@@ -26,7 +26,7 @@ with socket.create_connection((HOST, PORT), timeout=3) as c:
     c.settimeout(3)
 
     while True:
-        time.sleep(2)
+        time.sleep(1)
 
         # Ejemplo 1
         mensaje = "Hola servidor"
