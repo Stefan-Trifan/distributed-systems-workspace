@@ -13,13 +13,13 @@ with socket.socket(socket.AF_INET, socket.SOCK_DGRAM) as s:
         # 4096 es el tam max de bytes del mensaje
         data, adress = s.recvfrom(4096)
 
-        # Data son datos en puros bytes asi que tengo
-        # que convertirlo al formato legible (Unmarshall)
+        # data contiene bytes;
+        # decode() los convierte a str
         print(f"- {adress}: {data.decode()}")
 
         # respondo al cliente mandondole un mensaje
         # codificado al que me habia enviado el mensaje.
-        respuesta="Hola clientini"
+        respuesta = "Hola clientini"
         s.sendto(respuesta.encode(), adress)
 
 

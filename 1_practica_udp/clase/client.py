@@ -12,8 +12,10 @@ def enviar(texto):
     with socket.socket(socket.AF_INET, socket.SOCK_DGRAM) as s:
         # No esperes mas de 3 segundos
         s.settimeout(3)
+
         # Vamos a convertir el mensaje a bytes
         s.sendto(texto.encode(), (HOST, PORT))
+
         # Recibimos la respuesta del server
         data, adress = s.recvfrom(4096)
         print("Respuesta:", data.decode())

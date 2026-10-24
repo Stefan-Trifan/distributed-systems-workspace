@@ -75,7 +75,7 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
         # c -> SOCKET DE COMUNICACIÓN
         # el socket de la conexión TCP
         # establecida con ese cliente.
-        c, addr = s.accept() # c= conexion
+        c, addr = s.accept() # c = conexion
         print(f"Recibida conexion de {addr}")
 
         # Crea un objeto hilo cuya función de trabajo será atender_cliente
