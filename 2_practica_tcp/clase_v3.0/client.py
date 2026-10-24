@@ -19,6 +19,7 @@ def enviar(texto, c):
 # - socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 # - s.connect((HOST, PORT))
 # timeout: intento inicial de establecer la conexión
+# Aquí se establece el TCP
 with socket.create_connection((HOST, PORT), timeout=3) as c:
 
     # settimeout: configura el socket para que
