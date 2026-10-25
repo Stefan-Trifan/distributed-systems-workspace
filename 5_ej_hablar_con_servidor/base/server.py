@@ -2,7 +2,6 @@ import socket
 import json
 import threading
 
-
 HOST, PORT = '0.0.0.0', 5001
 
 # Diccionario: socket -> nombre del cliente
