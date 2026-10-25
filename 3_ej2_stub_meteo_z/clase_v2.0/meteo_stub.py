@@ -5,12 +5,13 @@ class MeteoStub:
         self.host = host
         self.port = port
 
-    def _request(self,op,ciudad):
+    def _request(self,op,ciudad, dia=None):
         with socket.create_connection((self.host, self.port), timeout = 3) as c:
 
             request = json.dumps({
                 'operacion': op,
-                'ciudad':ciudad
+                'ciudad':ciudad,
+                'dia': dia,
             })
             c.sendall(request.encode())
 
@@ -22,8 +23,8 @@ class MeteoStub:
 
         return r['result']
 
-    def temperatura(self,ciudad):
-        return self._request('temperatura', ciudad)
+    def temperatura(self,ciudad,dia):
+        return self._request('temperatura', ciudad, dia)
 
     def humedad(self,ciudad):
         return self._request('humedad', ciudad)

@@ -5,9 +5,16 @@ HOST = '127.0.0.1'
 PORT = 5002
 
 # Funciones que deben implementar los alumnos
-def temperatura(ciudad):
-    if ciudad == 'Madrid':
+def temperatura(ciudad, dia):
+    if ciudad != 'Madrid':
+        return None
+
+    if dia == 'hoy':
         return 21
+
+    if dia == 'manana':
+        return 28
+
     return None
 
 def humedad(ciudad):
@@ -23,9 +30,10 @@ def pronostico(ciudad):
 def procesar(r):
     ciudad = r.get('ciudad')
     operacion = r.get('operacion')
+    dia = r.get('dia')
 
     if operacion == 'temperatura':
-        resultado = temperatura(ciudad)
+        resultado = temperatura(ciudad, dia)
 
     elif operacion == 'humedad':
         resultado = humedad(ciudad)
