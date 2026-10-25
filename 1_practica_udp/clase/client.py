@@ -1,8 +1,8 @@
 import socket
 
 # Host al que nos queremos conectar
-HOST='127.0.0.1' # localhost (nosotros)
-PORT=5001
+HOST = '127.0.0.1' # localhost (nosotros)
+PORT = 5001
 
 
 def enviar(texto):

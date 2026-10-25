@@ -12,8 +12,8 @@ class MeteoStub:
                 'operacion': op,
                 'ciudad':ciudad
             })
-
             c.sendall(request.encode())
+
             answer = c.recv(4096).decode()
             r = json.loads(answer)
 

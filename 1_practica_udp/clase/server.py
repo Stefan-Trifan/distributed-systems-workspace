@@ -2,8 +2,8 @@
 import socket
 
 # Escucha mensajes de todas las ip que van al puerto 5001
-HOST='0.0.0.0'
-PORT=5001
+HOST = '0.0.0.0'
+PORT = 5001
 
 with socket.socket(socket.AF_INET, socket.SOCK_DGRAM) as s:
     s.bind((HOST, PORT))

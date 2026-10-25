@@ -1,7 +1,8 @@
 import socket
 import json
 
-HOST, PORT = '127.0.0.1', 5002
+HOST = '127.0.0.1'
+PORT = 5002
 
 # Funciones que deben implementar los alumnos
 def temperatura(ciudad):
