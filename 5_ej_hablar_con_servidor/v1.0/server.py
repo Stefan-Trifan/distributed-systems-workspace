@@ -2,13 +2,11 @@ import socket
 import json
 import threading
 
-
 HOST, PORT = '0.0.0.0', 5001
 
 # Diccionario: socket -> nombre del cliente
 # El nombre será None mientras el cliente no se identifique.
 clientes = {}
-
 
 def atender_cliente(c, addr):
     # Registramos la nueva conexión
@@ -67,7 +65,6 @@ def atender_cliente(c, addr):
     del clientes[c]
     print(f"Cliente {addr} desconectado")
 
-
 with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
     s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
 
@@ -78,11 +75,11 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
 
     while True:
         c, addr = s.accept()
-        print(f"Nueva conexión de {addr}")
+        print(f"Nueva conexion de {addr}")
 
         hilo = threading.Thread(
-            target=atender_cliente,
-            args=(c, addr),
-            daemon=True
+            target = atender_cliente,
+            args = (c, addr),
+            daemon = True
         )
         hilo.start()

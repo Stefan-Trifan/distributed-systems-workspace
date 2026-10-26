@@ -1,7 +1,7 @@
-865# Enunciado:
+# Enunciado:
 
-- Hay que crear el archivo client.py
-- Enviar un mensaje
-- Recibir mensaje
-- Enviar y recibir - Threads input()
-- Enviar solo a un compañero=
+<!-- done - Hay que crear el archivo client.py -->
+<!-- done - Enviar un mensaje -->
+<!-- done - Recibir mensaje -->
+<!-- done Enviar y recibir - Threads input() -->
+<!-- done - Enviar solo a un compañero -->
