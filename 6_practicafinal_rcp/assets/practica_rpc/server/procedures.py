@@ -17,5 +17,6 @@ def tarea_lenta(segundos):
     time.sleep(segundos)
     return segundos
 
+
 # TODO (alumno):
 # Añadir al menos dos procedimientos remotos adicionales.

@@ -25,7 +25,7 @@ class RPCClient:
     def call(self, function: str, *args: Any) -> Any:
         """Ejecuta un procedimiento remoto y devuelve su resultado.
 
-        # TODO (alumno):
+        TODO (alumno):
         1. Crear la petición RPC.
         2. Abrir una conexión TCP.
         3. Configurar timeout.

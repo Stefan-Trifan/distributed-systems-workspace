@@ -7,7 +7,7 @@ class RPCClient:
     def __init__(self, host,port ,timeout = 3):
         self.host = host
         self.port = port
-        self.timeout= timeout
+        self.timeout = timeout
 
     def call(self, function, *args):
         # done TODO: petición genérica, socket, JSON, respuesta y errores

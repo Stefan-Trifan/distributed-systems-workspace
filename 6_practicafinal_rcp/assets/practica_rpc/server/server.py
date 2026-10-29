@@ -12,7 +12,8 @@ import socket
 from common.protocol import send_json, recv_json
 
 HOST = "0.0.0.0"
-PORT = 5001
+PORT = 5000
+
 
 def main():
     print(f"Servidor escuchando en {HOST}:{PORT}")

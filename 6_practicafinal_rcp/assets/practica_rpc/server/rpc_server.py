@@ -17,7 +17,7 @@ class RPCServer:
     def register(self, name: str, function: Callable[..., Any]) -> None:
         """Registra un procedimiento remoto.
 
-        # TODO (alumno):
+        TODO (alumno):
         Implementar el registro.
         """
         raise NotImplementedError("Completar RPCServer.register()")
@@ -31,7 +31,7 @@ class RPCServer:
             "args": [4, 7]
         }
 
-        # TODO (alumno):
+        TODO (alumno):
         - Validar el formato de la petición.
         - Buscar el procedimiento.
         - Ejecutarlo.

@@ -1,6 +1,6 @@
 class RPCServer:
     def __init__(self):
-        self.procedures={}
+        self.procedures = {}
 
     def register(self, name, function):
         if not callable(function):

@@ -12,7 +12,8 @@ import socket
 from common.protocol import send_json, recv_json
 
 HOST = "127.0.0.1"  # Sustituir por IP/DNS de EC2 al desplegar
-PORT = 5001
+PORT = 5000
+
 
 def main():
     request = {
